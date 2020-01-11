@@ -9,7 +9,8 @@ class AbstractSecretAuthenticatorTest extends \PHPUnit_Framework_Testcase
 
     public function testConfigureHttpRequest()
     {
-        $httpRequest = $this->getMock('Laminas\Http\Request');
+        $httpRequest = $this->getMockBuilder('Laminas\Http\Request')
+            ->getMock();
         $clientId = '123';
         $clientSecret = 'abc';
         

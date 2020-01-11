@@ -21,7 +21,8 @@ class SecretPostTest extends \PHPUnit_Framework_Testcase
          * of either Iterator or IteratorAggregate in Unknown on line 0
          */
         //$postParams = $this->getMock('Laminas\Stdlib\ParametersInterface');
-        $postParams = $this->getMock('Laminas\Stdlib\Parameters');
+        $postParams = $this->getMockBuilder('Laminas\Stdlib\Parameters')
+            ->getMock();
         
         $postParams->expects($this->at(0))
             ->method('set')
@@ -30,7 +31,7 @@ class SecretPostTest extends \PHPUnit_Framework_Testcase
             ->method('set')
             ->with(Param::CLIENT_SECRET, $clientSecret);
         
-        $httpRequest = $this->getMock('Laminas\Http\Request');
+        $httpRequest = $this->getMockBuilder('Laminas\Http\Request')->getMock();
         $httpRequest->expects($this->once())
             ->method('getPost')
             ->will($this->returnValue($postParams));
